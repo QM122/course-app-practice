@@ -17,6 +17,10 @@ jobs:
         run: echo "First Step in Job 1"
       - name: Create a File
         run: echo "job1 file" > job1.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: job1-file
+          path: job1.txt
   job2:
     name: My name is Job2
     runs-on: ubuntu-latest
@@ -25,6 +29,10 @@ jobs:
         run: echo "job2 file" > job2.txt
       - name: Verify the File - Job 2
         run: ls -l job2.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: job2-file
+          path: job2.txt
   job3:
     name: My Name is Job3
     runs-on: ubuntu-latest
@@ -32,5 +40,10 @@ jobs:
       - job1
       - job2
     steps:
-      - name: Check te files are created
+      - name: Before the download
         run: ls -l
+      - name: Download the previous jobs files
+        uses: actions/download-artifact@v4
+      - name: After the download
+        run: ls -l
+
