@@ -1,4 +1,4 @@
-name: Netlify Deployment
+name: Netlify Development Deployment
 
 on:
   push:
