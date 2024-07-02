@@ -4,9 +4,11 @@
 name: Node.js Pipeline
 
 on:
-  push:
-    branches:
-      - master
+#  push:
+#    branches:
+#      - master
+  #Line to avoid code break when pushing to github actions. Uncomment push-> branches in main yml
+  workflow_dispatch:
 
 jobs:
   job1:
